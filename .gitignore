@@ -60,3 +60,4 @@ target/
 *.sublime-workspace
 
 .venv-server/
+db.sqlite3
