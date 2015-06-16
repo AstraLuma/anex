@@ -63,6 +63,13 @@ class Node:
     def __init__(self, path):
         self.path = path
 
+        # Determine the category path
+        # This mimics the algorithm used by Antimony itself, which isn't really the right one
+        bits = path.split('/')  # FIXME: Unix only
+        i = bits.index('nodes')
+        self.category = tuple(bits[i + 1:])
+        self.slashcategory = '/'.join(self.category)
+
     _source = None
 
     @property
@@ -148,6 +155,9 @@ class Node:
 
     @classmethod
     def list_nodes(cls, dirname):
+        """Node.list_nodes(str) -> Node, ...
+        Generate a Node for every node in the given path
+        """
         for dirpath, _, files in os.walk(dirname):
             for f in files:
                 if f.endswith('.node'):
@@ -155,7 +165,21 @@ class Node:
 
     @classmethod
     def user_nodes(cls):
+        """Node.user_nodes() -> Node, ...
+        Generate a Node for every user node installed
+        """
         yield from cls.list_nodes(cls.USER_DIR)
+
+    @classmethod
+    def bundled_nodes(cls):
+        """Node.bundled_nodes() -> Node, ...
+        Generate a Node for every bundled node
+
+        FIXME: Implement
+        """
+        raise NotImplementedError("Don't know how to find Antimony")
+        yield from cls.list_nodes(...)
+
 
 if __name__ == '__main__':
     for node in Node.user_nodes():
