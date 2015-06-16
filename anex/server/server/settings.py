@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # ... include the providers you want to enable:
+# ... include the providers you want to enable:
 #    'allauth.socialaccount.providers.amazon',
 #    'allauth.socialaccount.providers.angellist',
     'allauth.socialaccount.providers.bitbucket',
@@ -104,7 +104,9 @@ DATABASES = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'anex', 'server', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
