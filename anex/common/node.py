@@ -60,15 +60,19 @@ class Node:
     USER_DIR = os.path.expanduser('~/.local/share/antimony/nodes')  # FIXME: Linux only
 
     # XXX: On load, should we just write to __dict__, so it skips the descriptor in future loads?
-    def __init__(self, path):
+    def __init__(self, path=None, *, source=None):
         self.path = path
+        if path is not None:
 
-        # Determine the category path
-        # This mimics the algorithm used by Antimony itself, which isn't really the right one
-        bits = path.split('/')  # FIXME: Unix only
-        i = bits.index('nodes')
-        self.category = tuple(bits[i + 1:])
-        self.slashcategory = '/'.join(self.category)
+            # Determine the category path
+            # This mimics the algorithm used by Antimony itself, which isn't really the right one
+            bits = path.split('/')  # FIXME: Unix only
+            i = bits.index('nodes')
+            self.category = tuple(bits[i + 1:])
+            self.slashcategory = '/'.join(self.category)
+        elif source is not None:
+            self._source = source
+            # TODO: Normalize
 
     _source = None
 
