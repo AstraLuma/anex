@@ -157,6 +157,18 @@ STATIC_URL = '/static/'
 # Only one site, but required for allauth
 SITE_ID = 1
 
+# Allauth settings
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"  # Required to publish anything
+
+SOCIALACCOUNT_PROVIDERS = {
+    'persona': {
+        'AUDIENCE': 'http://localhost:8000'
+    }
+}
+
 try:
     from .localsettings import *
 except ImportError:

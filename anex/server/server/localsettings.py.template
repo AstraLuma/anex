@@ -1,5 +1,5 @@
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-SECRET_KEY = '{SECRET_KEY}'
+SECRET_KEY = {SECRET_KEY}
 
 DEBUG = False
 
@@ -10,3 +10,15 @@ DATABASES = {
 }
 
 # CACHES
+
+# In addition, get auth tokens from these places and configure them in admin
+# * https://developers.facebook.com/apps
+# * https://github.com/settings/applications/new
+# * https://console.developers.google.com/ (See https://django-allauth.readthedocs.org/en/latest/providers.html#google )
+# * https://apps.twitter.com/app/new
+
+SOCIALACCOUNT_PROVIDERS = {
+    'persona': {
+        'AUDIENCE': {SITEROOT}
+    }
+}
