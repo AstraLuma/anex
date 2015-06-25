@@ -11,6 +11,8 @@ DATABASES = {
 
 # CACHES
 
+STATIC_ROOT = {STATICROOT}
+
 # In addition, get auth tokens from these places and configure them in admin
 # * https://developers.facebook.com/apps
 # * https://github.com/settings/applications/new
