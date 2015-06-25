@@ -156,6 +156,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "anex", "server", "server", "static"),
+)
+
 # Only one site, but required for allauth
 SITE_ID = 1
 
