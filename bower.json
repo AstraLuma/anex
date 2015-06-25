@@ -1,0 +1,15 @@
+{
+  "name": "anex",
+  "homepage": "https://github.com/astronouth7303/anex",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0"
+  }
+}
